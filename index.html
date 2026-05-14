@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>THANUJA EAPCET CBT Simulator</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+    overflow:hidden;
+}
+
+/* =========================
+   COMMON
+========================= */
+
+.hidden{
+    display:none !important;
+}
+
+button{
+    cursor:pointer;
+    transition:0.2s;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+input{
+    outline:none;
+}
+
+.page{
+    width:100%;
+    height:100vh;
+}
+
+/* =========================
+   LOGIN PAGE
+========================= */
+
+.top-blue{
+    height:14px;
+    background:#0f4b8f;
+}
+
+.login-header{
+    height:90px;
+    background:#4d4d4d;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    color:white;
+}
+
+.system-name h4,
+.candidate-info h4{
+    font-size:13px;
+    margin-bottom:5px;
+    color:#ddd;
+}
+
+.yellow-text{
+    color:#ffcc00;
+    font-size:36px;
+    font-weight:bold;
+}
+
+.candidate-name{
+    color:#ffcc00;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.candidate-box{
+    width:70px;
+    height:70px;
+    border:2px solid white;
+    background:#cfcfcf;
+}
+
+.login-container{
+    height:calc(100vh - 104px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#ececec;
+}
+
+.login-card{
+    width:380px;
+    background:white;
+    padding:40px;
+    border-radius:4px;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.login-card h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#444;
+}
+
+.input-group{
+    position:relative;
+    margin-bottom:20px;
+}
+
+.input-group span{
+    position:absolute;
+    left:12px;
+    top:12px;
+    color:#777;
+}
+
+.input-group input{
+    width:100%;
+    padding:12px 12px 12px 40px;
+    border:1px solid #ccc;
+    border-radius:3px;
+}
+
+.sign-btn{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#1976d2;
+    color:white;
+    font-size:16px;
+    border-radius:3px;
+}
+
+/* =========================
+   INSTRUCTIONS PAGE
+========================= */
+
+.instructions-page{
+    background:#f2f2f2;
+    padding:30px;
+    overflow:auto;
+}
+
+.instructions-card{
+    max-width:1000px;
+    margin:auto;
+    background:white;
+    border:1px solid #ccc;
+    padding:30px;
+}
+
+.instructions-title{
+    background:#0f4b8f;
+    color:white;
+    padding:15px;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.instructions-section{
+    margin-bottom:25px;
+}
+
+.instructions-section h3{
+    margin-bottom:10px;
+    color:#0f4b8f;
+}
+
+.instructions-list li{
+    margin-left:20px;
+    margin-bottom:8px;
+}
+
+.start-section{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:30px;
+}
+
+.start-btn{
+    background:#1976d2;
+    color:white;
+    border:none;
+    padding:12px 30px;
+    font-size:16px;
+    border-radius:3px;
+}
+
+/* =========================
+   EXAM PAGE
+========================= */
+
+.exam-page{
+    display:flex;
+    flex-direction:column;
+    background:#e8edf2;
+}
+
+.exam-header{
+    background:linear-gradient(to bottom,#4a4a4a,#2c2c2c);
+    color:white;
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px 20px;
+}
+
+.exam-title{
+    background:#efefef;
+    color:#222;
+    padding:10px 15px;
+    border-radius:3px;
+    font-size:14px;
+    font-weight:bold;
+    border:1px solid #999;
+}
+
+.timer-section{
+    text-align:center;
+}
+
+.timer-section h3{
+    color:red;
+    font-size:15px;
+}
+
+.timer{
+    font-size:28px;
+    font-weight:bold;
+    color:#fff;
+}
+
+.user-section{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.user-img{
+    width:50px;
+    height:50px;
+    background:#ddd;
+    border:2px solid white;
+}
+
+.subject-bar{
+    display:flex;
+    background:#d9d9d9;
+    border-bottom:1px solid #aaa;
+}
+
+.subject-tab{
+    padding:12px 25px;
+    border-right:1px solid #aaa;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.subject-tab.active{
+    background:#1976d2;
+    color:white;
+    font-weight:bold;
+}
+
+.exam-body{
+    flex:1;
+    display:flex;
+    overflow:hidden;
+}
+
+/* =========================
+   QUESTION AREA
+========================= */
+
+.question-section{
+    flex:1;
+    padding:20px;
+    overflow:auto;
+}
+
+.question-card{
+    background:white;
+    border:1px solid #bbb;
+    min-height:500px;
+    display:flex;
+    flex-direction:column;
+}
+
+.question-header{
+    padding:15px;
+    border-bottom:1px solid #ccc;
+    background:#f7f7f7;
+    font-weight:bold;
+}
+
+.question-content{
+    padding:25px;
+    flex:1;
+}
+
+.question-text{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+.option{
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+.option input{
+    margin-right:10px;
+}
+
+.question-footer{
+    border-top:1px solid #ccc;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.left-buttons,
+.right-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    border:none;
+    padding:10px 16px;
+    color:white;
+    border-radius:3px;
+    font-size:14px;
+}
+
+.review-btn{
+    background:#7b1fa2;
+}
+
+.clear-btn{
+    background:#757575;
+}
+
+.save-btn{
+    background:#2e7d32;
+}
+
+.submit-btn{
+    background:#d32f2f;
+}
+
+/* =========================
+   PALETTE
+========================= */
+
+.palette-section{
+    width:320px;
+    background:white;
+    border-left:1px solid #bbb;
+    display:flex;
+    flex-direction:column;
+}
+
+.palette-header{
+    padding:15px;
+    border-bottom:1px solid #ccc;
+    background:#f7f7f7;
+}
+
+.legend{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px;
+}
+
+.legend-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+}
+
+.legend-color{
+    width:18px;
+    height:18px;
+    border-radius:3px;
+}
+
+.questions-grid{
+    padding:15px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    overflow:auto;
+}
+
+.q-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    border-radius:4px;
+    font-weight:bold;
+    border:1px solid #999;
+}
+
+.current{
+    background:#ff9800;
+    color:white;
+}
+
+.answered{
+    background:#2e7d32;
+    color:white;
+}
+
+.review{
+    background:#7b1fa2;
+    color:white;
+}
+
+.not-answered{
+    background:#ef6c00;
+    color:white;
+}
+
+.not-visited{
+    background:#f5f5f5;
+    color:black;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+}
+
+.modal-content{
+    background:white;
+    padding:30px;
+    width:400px;
+    border-radius:5px;
+}
+
+.modal-content h2{
+    margin-bottom:20px;
+}
+
+.summary-item{
+    margin-bottom:12px;
+}
+
+.modal-buttons{
+    margin-top:20px;
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+.fullscreen-btn{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    z-index:999;
+    background:#0f4b8f;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:4px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    .exam-body{
+        flex-direction:column;
+    }
+
+    .palette-section{
+        width:100%;
+        height:320px;
+    }
+
+    .question-card{
+        min-height:auto;
+    }
+
+    body{
+        overflow:auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+LOGIN PAGE
+========================= -->
+
+<div id="loginPage" class="page">
+
+    <div class="top-blue"></div>
+
+    <div class="login-header">
+
+        <div class="system-name">
+            <h4>System Name:</h4>
+            <div class="yellow-text">C001</div>
+        </div>
+
+        <div class="candidate-info">
+            <h4>Candidate Name:</h4>
+            <div class="candidate-name">Teja</div>
+        </div>
+
+        <div class="candidate-box"></div>
+
+    </div>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <h2>Login</h2>
+
+            <div class="input-group">
+                <span>👤</span>
+                <input type="text" placeholder="Username">
+            </div>
+
+            <div class="input-group">
+                <span>🔒</span>
+                <input type="password" placeholder="Password">
+            </div>
+
+            <button class="sign-btn" onclick="showInstructions()">
+                Sign In
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+INSTRUCTIONS PAGE
+========================= -->
+
+<div id="instructionsPage" class="page instructions-page hidden">
+
+    <div class="instructions-card">
+
+        <div class="instructions-title">
+            THANUJA EAPCET Instructions
+        </div>
+
+        <div class="instructions-section">
+            <h3>Candidate Details</h3>
+            <p><strong>Name:</strong> Teja Algubelli</p>
+            <p><strong>Exam:</strong> THANUJA EAPCET</p>
+            <p><strong>Duration:</strong> 3 Hours</p>
+        </div>
+
+        <div class="instructions-section">
+            <h3>Important Instructions</h3>
+
+            <ul class="instructions-list">
+                <li>Total Questions: 180</li>
+                <li>Each question has 4 options.</li>
+                <li>Click Save & Next to save answer.</li>
+                <li>Use Mark for Review for doubtful questions.</li>
+                <li>Do not refresh browser during exam.</li>
+                <li>Timer will auto submit after completion.</li>
+            </ul>
+
+        </div>
+
+        <div class="instructions-section">
+            <h3>Timer Information</h3>
+            <p>The countdown timer will begin immediately after starting exam.</p>
+        </div>
+
+        <div class="start-section">
+
+            <label>
+                <input type="checkbox" id="agreeCheck">
+                I have read all instructions
+            </label>
+
+            <button class="start-btn" onclick="startExam()">
+                Start Exam
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+EXAM PAGE
+========================= -->
+
+<div id="examPage" class="page exam-page hidden">
+
+    <div class="exam-header">
+
+        <div class="exam-title">
+            THANUJA EAPCET Agriculture and Pharma ▼
+        </div>
+
+        <div class="timer-section">
+            <h3>Remaining Time</h3>
+            <div class="timer" id="timer">03:00:00</div>
+        </div>
+
+        <div class="user-section">
+            <div class="user-img"></div>
+            <div>Teja Algubelli</div>
+        </div>
+
+    </div>
+
+    <div class="subject-bar">
+        <div class="subject-tab active">Botany</div>
+        <div class="subject-tab active">Zoology</div>
+        <div class="subject-tab">Physics</div>
+        <div class="subject-tab">Chemistry</div>
+    </div>
+
+    <div class="exam-body">
+
+        <!-- QUESTION SECTION -->
+
+        <div class="question-section">
+
+            <div class="question-card">
+
+                <div class="question-header">
+                    Question No. <span id="questionNumber">1</span>
+                </div>
+
+                <div class="question-content">
+
+                    <div class="question-text" id="questionText">
+                        Question 1
+                    </div>
+
+                    <div id="optionsContainer"></div>
+
+                </div>
+
+                <div class="question-footer">
+
+                    <div class="left-buttons">
+                        <button class="btn review-btn" onclick="markReview()">
+                            Mark for Review & Next
+                        </button>
+
+                        <button class="btn clear-btn" onclick="clearResponse()">
+                            Clear Response
+                        </button>
+                    </div>
+
+                    <div class="right-buttons">
+
+                        <button class="btn save-btn" onclick="saveAndNext()">
+                            Save & Next
+                        </button>
+
+                        <button class="btn submit-btn" onclick="submitExam()">
+                            Submit
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PALETTE -->
+
+        <div class="palette-section">
+
+            <div class="palette-header">
+
+                <strong>Question Palette</strong>
+
+                <div class="legend">
+
+                    <div class="legend-item">
+                        <div class="legend-color" style="background:#2e7d32;"></div>
+                        Answered
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-color" style="background:#ef6c00;"></div>
+                        Not Answered
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-color" style="background:#f5f5f5;border:1px solid #999;"></div>
+                        Not Visited
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-color" style="background:#7b1fa2;"></div>
+                        Review
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="questions-grid" id="palette"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================
+SUMMARY MODAL
+========================= -->
+
+<div id="summaryModal" class="modal hidden">
+
+    <div class="modal-content">
+
+        <h2>Exam Summary</h2>
+
+        <div class="summary-item">
+            Total Questions:
+            <strong id="totalQuestions"></strong>
+        </div>
+
+        <div class="summary-item">
+            Answered:
+            <strong id="answeredCount"></strong>
+        </div>
+
+        <div class="summary-item">
+            Not Answered:
+            <strong id="notAnsweredCount"></strong>
+        </div>
+
+        <div class="summary-item">
+            Marked for Review:
+            <strong id="reviewCount"></strong>
+        </div>
+
+        <div class="modal-buttons">
+
+            <button class="btn clear-btn" onclick="closeSummary()">
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<button class="fullscreen-btn" onclick="toggleFullscreen()">
+    Fullscreen
+</button>
+
+<script>
+
+/* =========================
+QUESTION DATA
+========================= */
+
+const questions = [];
+
+for(let i=1;i<=180;i++){
+
+    questions.push({
+        question:`Question ${i}`,
+        options:[
+            "Option 1",
+            "Option 2",
+            "Option 3",
+            "Option 4"
+        ]
+    });
+
+}
+
+/* =========================
+STATE
+========================= */
+
+let currentQuestion = 0;
+
+const answers = new Array(180).fill(null);
+
+const questionStatus = new Array(180).fill("not-visited");
+
+/* =========================
+PAGES
+========================= */
+
+function showInstructions(){
+
+    document.getElementById("loginPage").classList.add("hidden");
+
+    document.getElementById("instructionsPage").classList.remove("hidden");
+
+}
+
+function startExam(){
+
+    const check = document.getElementById("agreeCheck");
+
+    if(!check.checked){
+
+        alert("Please read and accept instructions.");
+
+        return;
+    }
+
+    document.getElementById("instructionsPage").classList.add("hidden");
+
+    document.getElementById("examPage").classList.remove("hidden");
+
+    generatePalette();
+
+    loadQuestion();
+
+    startTimer();
+
+}
+
+/* =========================
+LOAD QUESTION
+========================= */
+
+function loadQuestion(){
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("questionNumber").innerText = currentQuestion+1;
+
+    document.getElementById("questionText").innerText = q.question;
+
+    const optionsContainer = document.getElementById("optionsContainer");
+
+    optionsContainer.innerHTML = "";
+
+    q.options.forEach((option,index)=>{
+
+        const div = document.createElement("div");
+
+        div.className = "option";
+
+        div.innerHTML = `
+            <label>
+                <input type="radio"
+                       name="option"
+                       value="${index}"
+                       ${answers[currentQuestion] == index ? "checked" : ""}>
+                ${option}
+            </label>
+        `;
+
+        optionsContainer.appendChild(div);
+
+    });
+
+    if(questionStatus[currentQuestion] === "not-visited"){
+
+        questionStatus[currentQuestion] = "not-answered";
+
+    }
+
+    updatePalette();
+
+}
+
+/* =========================
+SAVE ANSWER
+========================= */
+
+function saveCurrentAnswer(){
+
+    const selected = document.querySelector('input[name="option"]:checked');
+
+    if(selected){
+
+        answers[currentQuestion] = selected.value;
+
+        questionStatus[currentQuestion] = "answered";
+
+    }else{
+
+        if(questionStatus[currentQuestion] !== "review"){
+
+            questionStatus[currentQuestion] = "not-answered";
+
+        }
+
+    }
+
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+function saveAndNext(){
+
+    saveCurrentAnswer();
+
+    if(currentQuestion < 179){
+
+        currentQuestion++;
+
+        loadQuestion();
+    }
+
+}
+
+function markReview(){
+
+    saveCurrentAnswer();
+
+    questionStatus[currentQuestion] = "review";
+
+    if(currentQuestion < 179){
+
+        currentQuestion++;
+
+        loadQuestion();
+    }
+
+}
+
+function clearResponse(){
+
+    answers[currentQuestion] = null;
+
+    questionStatus[currentQuestion] = "not-answered";
+
+    loadQuestion();
+
+}
+
+/* =========================
+PALETTE
+========================= */
+
+function generatePalette(){
+
+    const palette = document.getElementById("palette");
+
+    palette.innerHTML = "";
+
+    for(let i=0;i<180;i++){
+
+        const btn = document.createElement("button");
+
+        btn.className = "q-btn";
+
+        btn.innerText = i+1;
+
+        btn.onclick = ()=>{
+
+            saveCurrentAnswer();
+
+            currentQuestion = i;
+
+            loadQuestion();
+        };
+
+        palette.appendChild(btn);
+
+    }
+
+    updatePalette();
+
+}
+
+function updatePalette(){
+
+    const buttons = document.querySelectorAll(".q-btn");
+
+    buttons.forEach((btn,index)=>{
+
+        btn.className = "q-btn";
+
+        btn.classList.add(questionStatus[index]);
+
+        if(index === currentQuestion){
+
+            btn.classList.add("current");
+        }
+
+    });
+
+}
+
+/* =========================
+TIMER
+========================= */
+
+let totalSeconds = 3 * 60 * 60;
+
+function startTimer(){
+
+    const timerEl = document.getElementById("timer");
+
+    const interval = setInterval(()=>{
+
+        const hours = Math.floor(totalSeconds / 3600);
+
+        const minutes = Math.floor((totalSeconds % 3600)/60);
+
+        const seconds = totalSeconds % 60;
+
+        timerEl.innerText =
+            String(hours).padStart(2,"0")+":"+
+            String(minutes).padStart(2,"0")+":"+
+            String(seconds).padStart(2,"0");
+
+        if(totalSeconds <= 0){
+
+            clearInterval(interval);
+
+            showSummary();
+
+        }
+
+        totalSeconds--;
+
+    },1000);
+
+}
+
+/* =========================
+SUBMIT
+========================= */
+
+function submitExam(){
+
+    const confirmSubmit = confirm("Are you sure you want to submit the exam?");
+
+    if(confirmSubmit){
+
+        saveCurrentAnswer();
+
+        showSummary();
+    }
+
+}
+
+function showSummary(){
+
+    document.getElementById("summaryModal").classList.remove("hidden");
+
+    const answered =
+        questionStatus.filter(q=>q==="answered").length;
+
+    const review =
+        questionStatus.filter(q=>q==="review").length;
+
+    const notAnswered =
+        180 - answered - review;
+
+    document.getElementById("totalQuestions").innerText = 180;
+
+    document.getElementById("answeredCount").innerText = answered;
+
+    document.getElementById("notAnsweredCount").innerText = notAnswered;
+
+    document.getElementById("reviewCount").innerText = review;
+
+}
+
+function closeSummary(){
+
+    document.getElementById("summaryModal").classList.add("hidden");
+
+}
+
+/* =========================
+FULLSCREEN
+========================= */
+
+function toggleFullscreen(){
+
+    if(!document.fullscreenElement){
+
+        document.documentElement.requestFullscreen();
+
+    }else{
+
+        document.exitFullscreen();
+    }
+
+}
+
+/* =========================
+PREVENT REFRESH
+========================= */
+
+window.onbeforeunload = function(){
+
+    return "Exam is running. Are you sure you want to leave?";
+};
+
+/* =========================
+SUBJECT TAB UI
+========================= */
+
+const tabs = document.querySelectorAll(".subject-tab");
+
+tabs.forEach(tab=>{
+
+    tab.addEventListener("click",()=>{
+
+        tabs.forEach(t=>t.classList.remove("active"));
+
+        tab.classList.add("active");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
