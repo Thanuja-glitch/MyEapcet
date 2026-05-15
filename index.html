@@ -60,6 +60,23 @@ background:#cfcfcf;
 border:2px solid white;
 }
 
+.candidate-photo{
+width:65px;
+height:65px;
+border:2px solid white;
+object-fit:cover;
+border-radius:2px;
+background:white;
+}
+
+.user-photo{
+width:50px;
+height:50px;
+border:2px solid white;
+object-fit:cover;
+border-radius:2px;
+background:white;
+}
 .login-page{
 height:100vh;
 background:#edf1f5;
@@ -518,7 +535,11 @@ LOGIN PAGE
 <div class="yellow" style="font-size:20px;">Teja Algubelli</div>
 </div>
 
-<div class="candidate-box"></div>
+<img
+src="Screenshot 2026-05-15 065514.png"
+class="candidate-photo"
+alt="Teja Algubelli"
+>
 
 </div>
 
@@ -621,7 +642,11 @@ THANUJA EAPCET - Agriculture & Pharmacy ▼
 </div>
 
 <div class="user-info">
-<div class="user-image"></div>
+<img
+src="Screenshot 2026-05-15 065514.png"
+class="user-photo"
+alt="Teja Algubelli"
+>
 <div>Teja Algubelli</div>
 </div>
 
@@ -794,6 +819,7 @@ Fullscreen
 </button>
 
 <script>
+    
 
 /* =========================
 QUESTIONS
@@ -1241,6 +1267,7 @@ function closeSummary(){
 document.getElementById("summaryModal").classList.add("hidden");
 
 }
+
 
 /* =========================
 FULLSCREEN
