@@ -1,518 +1,496 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>THANUJA EAPCET CBT Simulator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THANUJA EAPCET CBT</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#f2f2f2;
-    overflow:hidden;
+background:#edf1f5;
+overflow:hidden;
+font-size:13px;
+color:#222;
 }
-
-/* =========================
-   COMMON
-========================= */
 
 .hidden{
-    display:none !important;
-}
-
-button{
-    cursor:pointer;
-    transition:0.2s;
-}
-
-button:hover{
-    opacity:0.9;
-}
-
-input{
-    outline:none;
-}
-
-.page{
-    width:100%;
-    height:100vh;
+display:none !important;
 }
 
 /* =========================
-   LOGIN PAGE
+LOGIN PAGE
 ========================= */
 
-.top-blue{
-    height:14px;
-    background:#0f4b8f;
+.top-strip{
+height:12px;
+background:#0d5aa7;
 }
 
 .login-header{
-    height:90px;
-    background:#4d4d4d;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 30px;
-    color:white;
+height:90px;
+background:#4c4c4c;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 25px;
+color:white;
 }
 
-.system-name h4,
-.candidate-info h4{
-    font-size:13px;
-    margin-bottom:5px;
-    color:#ddd;
+.yellow{
+color:#ffd400;
+font-weight:bold;
 }
 
-.yellow-text{
-    color:#ffcc00;
-    font-size:36px;
-    font-weight:bold;
-}
-
-.candidate-name{
-    color:#ffcc00;
-    font-size:20px;
-    font-weight:bold;
+.system-text{
+font-size:34px;
 }
 
 .candidate-box{
-    width:70px;
-    height:70px;
-    border:2px solid white;
-    background:#cfcfcf;
+width:65px;
+height:65px;
+background:#cfcfcf;
+border:2px solid white;
+}
+
+.login-page{
+height:100vh;
+background:#edf1f5;
 }
 
 .login-container{
-    height:calc(100vh - 104px);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#ececec;
+height:calc(100vh - 102px);
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .login-card{
-    width:380px;
-    background:white;
-    padding:40px;
-    border-radius:4px;
-    box-shadow:0 0 10px rgba(0,0,0,0.2);
+width:360px;
+background:white;
+padding:35px;
+border:1px solid #c5c5c5;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 .login-card h2{
-    text-align:center;
-    margin-bottom:30px;
-    color:#444;
+margin-bottom:25px;
+text-align:center;
+color:#333;
 }
 
 .input-group{
-    position:relative;
-    margin-bottom:20px;
+position:relative;
+margin-bottom:18px;
 }
 
 .input-group span{
-    position:absolute;
-    left:12px;
-    top:12px;
-    color:#777;
+position:absolute;
+left:12px;
+top:10px;
+color:#666;
 }
 
 .input-group input{
-    width:100%;
-    padding:12px 12px 12px 40px;
-    border:1px solid #ccc;
-    border-radius:3px;
+width:100%;
+padding:10px 10px 10px 38px;
+border:1px solid #bcbcbc;
+font-size:13px;
 }
 
 .sign-btn{
-    width:100%;
-    padding:12px;
-    border:none;
-    background:#1976d2;
-    color:white;
-    font-size:16px;
-    border-radius:3px;
+width:100%;
+padding:11px;
+background:#0d5aa7;
+border:none;
+color:white;
+font-size:14px;
+font-weight:bold;
 }
 
 /* =========================
-   INSTRUCTIONS PAGE
+INSTRUCTIONS PAGE
 ========================= */
 
 .instructions-page{
-    background:#f2f2f2;
-    padding:30px;
-    overflow:auto;
+padding:25px;
+height:100vh;
+overflow:auto;
+background:#edf1f5;
 }
 
 .instructions-card{
-    max-width:1000px;
-    margin:auto;
-    background:white;
-    border:1px solid #ccc;
-    padding:30px;
+max-width:1100px;
+margin:auto;
+background:white;
+border:1px solid #bdbdbd;
+padding:25px;
 }
 
 .instructions-title{
-    background:#0f4b8f;
-    color:white;
-    padding:15px;
-    font-size:22px;
-    margin-bottom:20px;
+background:#0d5aa7;
+color:white;
+padding:12px;
+font-size:20px;
+margin-bottom:20px;
 }
 
-.instructions-section{
-    margin-bottom:25px;
+.section{
+margin-bottom:25px;
 }
 
-.instructions-section h3{
-    margin-bottom:10px;
-    color:#0f4b8f;
+.section h3{
+margin-bottom:10px;
+color:#0d5aa7;
 }
 
-.instructions-list li{
-    margin-left:20px;
-    margin-bottom:8px;
+.section ul{
+margin-left:20px;
 }
 
-.start-section{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-top:30px;
+.section li{
+margin-bottom:8px;
+}
+
+.start-area{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:20px;
 }
 
 .start-btn{
-    background:#1976d2;
-    color:white;
-    border:none;
-    padding:12px 30px;
-    font-size:16px;
-    border-radius:3px;
+padding:10px 25px;
+background:#0d5aa7;
+border:none;
+color:white;
+font-weight:bold;
 }
 
 /* =========================
-   EXAM PAGE
+EXAM PAGE
 ========================= */
 
 .exam-page{
-    display:flex;
-    flex-direction:column;
-    background:#e8edf2;
+height:100vh;
+display:flex;
+flex-direction:column;
 }
 
 .exam-header{
-    background:linear-gradient(to bottom,#4a4a4a,#2c2c2c);
-    color:white;
-    height:75px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:10px 20px;
+height:72px;
+background:linear-gradient(#535353,#303030);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 15px;
+color:white;
 }
 
-.exam-title{
-    background:#efefef;
-    color:#222;
-    padding:10px 15px;
-    border-radius:3px;
-    font-size:14px;
-    font-weight:bold;
-    border:1px solid #999;
+.exam-label{
+background:#efefef;
+border:1px solid #999;
+padding:8px 12px;
+color:#222;
+font-weight:bold;
+font-size:13px;
 }
 
-.timer-section{
-    text-align:center;
+.timer-box{
+text-align:center;
 }
 
-.timer-section h3{
-    color:red;
-    font-size:15px;
+.timer-box h4{
+color:red;
+font-size:13px;
 }
 
 .timer{
-    font-size:28px;
-    font-weight:bold;
-    color:#fff;
+font-size:28px;
+font-weight:bold;
 }
 
-.user-section{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.user-info{
+display:flex;
+align-items:center;
+gap:10px;
 }
 
-.user-img{
-    width:50px;
-    height:50px;
-    background:#ddd;
-    border:2px solid white;
+.user-image{
+width:50px;
+height:50px;
+background:#d4d4d4;
+border:2px solid white;
 }
 
-.subject-bar{
-    display:flex;
-    background:#d9d9d9;
-    border-bottom:1px solid #aaa;
+.subject-tabs{
+display:flex;
+background:#dfe5eb;
+border-bottom:1px solid #aaa;
 }
 
 .subject-tab{
-    padding:12px 25px;
-    border-right:1px solid #aaa;
-    cursor:pointer;
-    font-size:14px;
+padding:10px 22px;
+border-right:1px solid #aaa;
+cursor:pointer;
+font-size:13px;
+background:#dfe5eb;
 }
 
 .subject-tab.active{
-    background:#1976d2;
-    color:white;
-    font-weight:bold;
+background:#0d5aa7;
+color:white;
+font-weight:bold;
 }
 
 .exam-body{
-    flex:1;
-    display:flex;
-    overflow:hidden;
+flex:1;
+display:flex;
+overflow:hidden;
 }
 
 /* =========================
-   QUESTION AREA
+QUESTION AREA
 ========================= */
 
 .question-section{
-    flex:1;
-    padding:20px;
-    overflow:auto;
+flex:1;
+padding:12px;
+overflow:auto;
 }
 
-.question-card{
-    background:white;
-    border:1px solid #bbb;
-    min-height:500px;
-    display:flex;
-    flex-direction:column;
+.question-box{
+background:white;
+border:1px solid #b7b7b7;
+min-height:100%;
+display:flex;
+flex-direction:column;
 }
 
 .question-header{
-    padding:15px;
-    border-bottom:1px solid #ccc;
-    background:#f7f7f7;
-    font-weight:bold;
+padding:12px;
+background:#f3f3f3;
+border-bottom:1px solid #c5c5c5;
+font-weight:bold;
 }
 
 .question-content{
-    padding:25px;
-    flex:1;
+padding:20px;
+flex:1;
 }
 
 .question-text{
-    font-size:20px;
-    margin-bottom:30px;
+font-size:16px;
+margin-bottom:25px;
+line-height:1.5;
 }
 
 .option{
-    margin-bottom:20px;
-    font-size:16px;
+margin-bottom:18px;
+font-size:14px;
 }
 
 .option input{
-    margin-right:10px;
+margin-right:10px;
 }
 
 .question-footer{
-    border-top:1px solid #ccc;
-    padding:15px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px;
+border-top:1px solid #ccc;
+padding:12px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:10px;
 }
 
-.left-buttons,
-.right-buttons{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+.left-btns,
+.right-btns{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
 }
 
-.btn{
-    border:none;
-    padding:10px 16px;
-    color:white;
-    border-radius:3px;
-    font-size:14px;
+.exam-btn{
+padding:7px 12px;
+border:1px solid #777;
+font-size:12px;
+background:#efefef;
+cursor:pointer;
 }
 
 .review-btn{
-    background:#7b1fa2;
-}
-
-.clear-btn{
-    background:#757575;
+background:#7e57c2;
+color:white;
+border:none;
 }
 
 .save-btn{
-    background:#2e7d32;
+background:#0d5aa7;
+color:white;
+border:none;
+}
+
+.clear-btn{
+background:#f0f0f0;
 }
 
 .submit-btn{
-    background:#d32f2f;
+background:#d32f2f;
+color:white;
+border:none;
 }
 
 /* =========================
-   PALETTE
+PALETTE
 ========================= */
 
-.palette-section{
-    width:320px;
-    background:white;
-    border-left:1px solid #bbb;
-    display:flex;
-    flex-direction:column;
+.palette{
+width:320px;
+background:white;
+border-left:1px solid #bbb;
+display:flex;
+flex-direction:column;
 }
 
-.palette-header{
-    padding:15px;
-    border-bottom:1px solid #ccc;
-    background:#f7f7f7;
+.palette-top{
+padding:12px;
+border-bottom:1px solid #ccc;
+background:#f3f3f3;
 }
 
 .legend{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-    margin-top:10px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:8px;
+margin-top:10px;
 }
 
 .legend-item{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    font-size:12px;
+display:flex;
+align-items:center;
+gap:6px;
+font-size:11px;
 }
 
 .legend-color{
-    width:18px;
-    height:18px;
-    border-radius:3px;
+width:16px;
+height:16px;
+border-radius:3px;
 }
 
-.questions-grid{
-    padding:15px;
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
-    overflow:auto;
+.palette-grid{
+padding:12px;
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:10px;
+overflow:auto;
 }
 
-.q-btn{
-    width:45px;
-    height:45px;
-    border:none;
-    border-radius:4px;
-    font-weight:bold;
-    border:1px solid #999;
+.qbtn{
+width:42px;
+height:42px;
+border:1px solid #888;
+background:#f8f8f8;
+font-size:12px;
+font-weight:bold;
+cursor:pointer;
 }
 
 .current{
-    background:#ff9800;
-    color:white;
+background:#ff9800 !important;
+color:white;
 }
 
 .answered{
-    background:#2e7d32;
-    color:white;
+background:#2e7d32 !important;
+color:white;
 }
 
 .review{
-    background:#7b1fa2;
-    color:white;
+background:#7e57c2 !important;
+color:white;
 }
 
 .not-answered{
-    background:#ef6c00;
-    color:white;
+background:#ef6c00 !important;
+color:white;
 }
 
 .not-visited{
-    background:#f5f5f5;
-    color:black;
+background:#f4f4f4 !important;
 }
 
 /* =========================
-   MODAL
+MODAL
 ========================= */
 
 .modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.5);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    z-index:999;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.5);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
 }
 
-.modal-content{
-    background:white;
-    padding:30px;
-    width:400px;
-    border-radius:5px;
+.modal-box{
+width:450px;
+background:white;
+padding:25px;
+border-radius:3px;
 }
 
-.modal-content h2{
-    margin-bottom:20px;
+.modal-box h2{
+margin-bottom:20px;
 }
 
-.summary-item{
-    margin-bottom:12px;
+.summary-row{
+margin-bottom:10px;
 }
 
-.modal-buttons{
-    margin-top:20px;
-    display:flex;
-    justify-content:flex-end;
-    gap:10px;
+.modal-actions{
+margin-top:20px;
+text-align:right;
 }
 
 .fullscreen-btn{
-    position:fixed;
-    bottom:20px;
-    left:20px;
-    z-index:999;
-    background:#0f4b8f;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:4px;
+position:fixed;
+bottom:15px;
+left:15px;
+padding:10px 15px;
+background:#0d5aa7;
+color:white;
+border:none;
+z-index:999;
 }
 
 /* =========================
-   MOBILE
+RESPONSIVE
 ========================= */
 
 @media(max-width:900px){
 
-    .exam-body{
-        flex-direction:column;
-    }
+.exam-body{
+flex-direction:column;
+}
 
-    .palette-section{
-        width:100%;
-        height:320px;
-    }
+.palette{
+width:100%;
+height:300px;
+}
 
-    .question-card{
-        min-height:auto;
-    }
+body{
+overflow:auto;
+}
 
-    body{
-        overflow:auto;
-    }
 }
 
 </style>
@@ -524,104 +502,104 @@ input{
 LOGIN PAGE
 ========================= -->
 
-<div id="loginPage" class="page">
+<div id="loginPage" class="login-page">
 
-    <div class="top-blue"></div>
+<div class="top-strip"></div>
 
-    <div class="login-header">
+<div class="login-header">
 
-        <div class="system-name">
-            <h4>System Name:</h4>
-            <div class="yellow-text">C001</div>
-        </div>
+<div>
+<div>System Name:</div>
+<div class="yellow system-text">C001</div>
+</div>
 
-        <div class="candidate-info">
-            <h4>Candidate Name:</h4>
-            <div class="candidate-name">Teja</div>
-        </div>
+<div>
+<div>Candidate Name:</div>
+<div class="yellow" style="font-size:20px;">Teja Algubelli</div>
+</div>
 
-        <div class="candidate-box"></div>
+<div class="candidate-box"></div>
 
-    </div>
+</div>
 
-    <div class="login-container">
+<div class="login-container">
 
-        <div class="login-card">
+<div class="login-card">
 
-            <h2>Login</h2>
+<h2>Login</h2>
 
-            <div class="input-group">
-                <span>👤</span>
-                <input type="text" placeholder="Username">
-            </div>
+<div class="input-group">
+<span>👤</span>
+<input type="text" placeholder="Username">
+</div>
 
-            <div class="input-group">
-                <span>🔒</span>
-                <input type="password" placeholder="Password">
-            </div>
+<div class="input-group">
+<span>🔒</span>
+<input type="password" placeholder="Password">
+</div>
 
-            <button class="sign-btn" onclick="showInstructions()">
-                Sign In
-            </button>
+<button class="sign-btn" onclick="showInstructions()">
+Sign In
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </div>
 
 <!-- =========================
-INSTRUCTIONS PAGE
+INSTRUCTIONS
 ========================= -->
 
-<div id="instructionsPage" class="page instructions-page hidden">
+<div id="instructionsPage" class="instructions-page hidden">
 
-    <div class="instructions-card">
+<div class="instructions-card">
 
-        <div class="instructions-title">
-            THANUJA EAPCET Instructions
-        </div>
+<div class="instructions-title">
+THANUJA EAPCET - Agriculture & Pharmacy
+</div>
 
-        <div class="instructions-section">
-            <h3>Candidate Details</h3>
-            <p><strong>Name:</strong> Teja Algubelli</p>
-            <p><strong>Exam:</strong> THANUJA EAPCET</p>
-            <p><strong>Duration:</strong> 3 Hours</p>
-        </div>
+<div class="section">
+<h3>Candidate Details</h3>
 
-        <div class="instructions-section">
-            <h3>Important Instructions</h3>
+<p><strong>Name:</strong> Teja Algubelli</p>
+<p><strong>Exam:</strong> THANUJA EAPCET</p>
+<p><strong>Stream:</strong> Agriculture & Pharmacy</p>
+<p><strong>Total Questions:</strong> 160</p>
+<p><strong>Duration:</strong> 03:00:00</p>
 
-            <ul class="instructions-list">
-                <li>Total Questions: 180</li>
-                <li>Each question has 4 options.</li>
-                <li>Click Save & Next to save answer.</li>
-                <li>Use Mark for Review for doubtful questions.</li>
-                <li>Do not refresh browser during exam.</li>
-                <li>Timer will auto submit after completion.</li>
-            </ul>
+</div>
 
-        </div>
+<div class="section">
 
-        <div class="instructions-section">
-            <h3>Timer Information</h3>
-            <p>The countdown timer will begin immediately after starting exam.</p>
-        </div>
+<h3>Important Instructions</h3>
 
-        <div class="start-section">
+<ul>
+<li>Total Questions: 160</li>
+<li>Each question has 4 options.</li>
+<li>Use Save & Next to save answers.</li>
+<li>Use Mark for Review for doubtful questions.</li>
+<li>Do not refresh or close browser.</li>
+<li>Timer auto submits exam after completion.</li>
+</ul>
 
-            <label>
-                <input type="checkbox" id="agreeCheck">
-                I have read all instructions
-            </label>
+</div>
 
-            <button class="start-btn" onclick="startExam()">
-                Start Exam
-            </button>
+<div class="start-area">
 
-        </div>
+<label>
+<input type="checkbox" id="agreeCheck">
+I have read all instructions
+</label>
 
-    </div>
+<button class="start-btn" onclick="startExam()">
+Start Exam
+</button>
+
+</div>
+
+</div>
 
 </div>
 
@@ -629,204 +607,311 @@ INSTRUCTIONS PAGE
 EXAM PAGE
 ========================= -->
 
-<div id="examPage" class="page exam-page hidden">
+<div id="examPage" class="exam-page hidden">
 
-    <div class="exam-header">
+<div class="exam-header">
 
-        <div class="exam-title">
-            THANUJA EAPCET Agriculture and Pharma ▼
-        </div>
+<div class="exam-label">
+THANUJA EAPCET - Agriculture & Pharmacy ▼
+</div>
 
-        <div class="timer-section">
-            <h3>Remaining Time</h3>
-            <div class="timer" id="timer">03:00:00</div>
-        </div>
+<div class="timer-box">
+<h4>Remaining Time</h4>
+<div class="timer" id="timer">03:00:00</div>
+</div>
 
-        <div class="user-section">
-            <div class="user-img"></div>
-            <div>Teja Algubelli</div>
-        </div>
-
-    </div>
-
-    <div class="subject-bar">
-        <div class="subject-tab active">Botany</div>
-        <div class="subject-tab active">Zoology</div>
-        <div class="subject-tab">Physics</div>
-        <div class="subject-tab">Chemistry</div>
-    </div>
-
-    <div class="exam-body">
-
-        <!-- QUESTION SECTION -->
-
-        <div class="question-section">
-
-            <div class="question-card">
-
-                <div class="question-header">
-                    Question No. <span id="questionNumber">1</span>
-                </div>
-
-                <div class="question-content">
-
-                    <div class="question-text" id="questionText">
-                        Question 1
-                    </div>
-
-                    <div id="optionsContainer"></div>
-
-                </div>
-
-                <div class="question-footer">
-
-                    <div class="left-buttons">
-                        <button class="btn review-btn" onclick="markReview()">
-                            Mark for Review & Next
-                        </button>
-
-                        <button class="btn clear-btn" onclick="clearResponse()">
-                            Clear Response
-                        </button>
-                    </div>
-
-                    <div class="right-buttons">
-
-                        <button class="btn save-btn" onclick="saveAndNext()">
-                            Save & Next
-                        </button>
-
-                        <button class="btn submit-btn" onclick="submitExam()">
-                            Submit
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- PALETTE -->
-
-        <div class="palette-section">
-
-            <div class="palette-header">
-
-                <strong>Question Palette</strong>
-
-                <div class="legend">
-
-                    <div class="legend-item">
-                        <div class="legend-color" style="background:#2e7d32;"></div>
-                        Answered
-                    </div>
-
-                    <div class="legend-item">
-                        <div class="legend-color" style="background:#ef6c00;"></div>
-                        Not Answered
-                    </div>
-
-                    <div class="legend-item">
-                        <div class="legend-color" style="background:#f5f5f5;border:1px solid #999;"></div>
-                        Not Visited
-                    </div>
-
-                    <div class="legend-item">
-                        <div class="legend-color" style="background:#7b1fa2;"></div>
-                        Review
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="questions-grid" id="palette"></div>
-
-        </div>
-
-    </div>
+<div class="user-info">
+<div class="user-image"></div>
+<div>Teja Algubelli</div>
+</div>
 
 </div>
 
-<!-- =========================
-SUMMARY MODAL
-========================= -->
+<!-- SUBJECT TABS -->
+
+<div class="subject-tabs">
+
+<div class="subject-tab active" onclick="switchSubject('Botany')">
+Botany
+</div>
+
+<div class="subject-tab" onclick="switchSubject('Zoology')">
+Zoology
+</div>
+
+<div class="subject-tab" onclick="switchSubject('Physics')">
+Physics
+</div>
+
+<div class="subject-tab" onclick="switchSubject('Chemistry')">
+Chemistry
+</div>
+
+</div>
+
+<!-- MAIN BODY -->
+
+<div class="exam-body">
+
+<!-- QUESTION SECTION -->
+
+<div class="question-section">
+
+<div class="question-box">
+
+<div class="question-header">
+Question No. <span id="questionNumber">1</span>
+</div>
+
+<div class="question-content">
+
+<div class="question-text" id="questionText"></div>
+
+<div id="optionsContainer"></div>
+
+</div>
+
+<div class="question-footer">
+
+<div class="left-btns">
+
+<button class="exam-btn review-btn" onclick="markReview()">
+Mark for Review & Next
+</button>
+
+<button class="exam-btn clear-btn" onclick="clearResponse()">
+Clear Response
+</button>
+
+</div>
+
+<div class="right-btns">
+
+<button class="exam-btn save-btn" onclick="saveAndNext()">
+Save & Next
+</button>
+
+<button class="exam-btn submit-btn" onclick="submitExam()">
+Submit
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PALETTE -->
+
+<div class="palette">
+
+<div class="palette-top">
+
+<strong>Question Palette</strong>
+
+<div class="legend">
+
+<div class="legend-item">
+<div class="legend-color" style="background:#2e7d32;"></div>
+Answered
+</div>
+
+<div class="legend-item">
+<div class="legend-color" style="background:#ef6c00;"></div>
+Not Answered
+</div>
+
+<div class="legend-item">
+<div class="legend-color" style="background:#f4f4f4;border:1px solid #999;"></div>
+Not Visited
+</div>
+
+<div class="legend-item">
+<div class="legend-color" style="background:#7e57c2;"></div>
+Review
+</div>
+
+</div>
+
+</div>
+
+<div class="palette-grid" id="paletteGrid"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- SUMMARY MODAL -->
 
 <div id="summaryModal" class="modal hidden">
 
-    <div class="modal-content">
+<div class="modal-box">
 
-        <h2>Exam Summary</h2>
+<h2>Exam Summary</h2>
 
-        <div class="summary-item">
-            Total Questions:
-            <strong id="totalQuestions"></strong>
-        </div>
+<div class="summary-row">
+Total Questions:
+<strong id="totalCount"></strong>
+</div>
 
-        <div class="summary-item">
-            Answered:
-            <strong id="answeredCount"></strong>
-        </div>
+<div class="summary-row">
+Answered:
+<strong id="answeredCount"></strong>
+</div>
 
-        <div class="summary-item">
-            Not Answered:
-            <strong id="notAnsweredCount"></strong>
-        </div>
+<div class="summary-row">
+Not Answered:
+<strong id="notAnsweredCount"></strong>
+</div>
 
-        <div class="summary-item">
-            Marked for Review:
-            <strong id="reviewCount"></strong>
-        </div>
+<div class="summary-row">
+Marked for Review:
+<strong id="reviewCount"></strong>
+</div>
 
-        <div class="modal-buttons">
+<hr style="margin:15px 0;">
 
-            <button class="btn clear-btn" onclick="closeSummary()">
-                Close
-            </button>
+<div id="subjectSummary"></div>
 
-        </div>
+<div class="modal-actions">
 
-    </div>
+<button class="exam-btn" onclick="closeSummary()">
+Close
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 <button class="fullscreen-btn" onclick="toggleFullscreen()">
-    Fullscreen
+Fullscreen
 </button>
 
 <script>
 
 /* =========================
-QUESTION DATA
+QUESTIONS
 ========================= */
 
 const questions = [];
 
-for(let i=1;i<=180;i++){
+/* BOTANY */
 
-    questions.push({
-        question:`Question ${i}`,
-        options:[
-            "Option 1",
-            "Option 2",
-            "Option 3",
-            "Option 4"
-        ]
-    });
+const botanyReal = [
+
+"Which tissue is responsible for secondary growth in plants?",
+"Which pigment is mainly responsible for photosynthesis?",
+"Transpiration occurs mainly through?",
+"Which plant hormone promotes cell elongation?",
+"The opening and closing of stomata is controlled by?"
+
+];
+
+/* ZOOLOGY */
+
+const zoologyReal = [
+
+"Which hormone regulates blood calcium levels?",
+"Functional unit of kidney is?",
+"Which blood group is universal donor?",
+"Human heart has how many chambers?",
+"Insulin is secreted by?"
+
+];
+
+/* PHYSICS */
+
+const physicsReal = [
+
+"The SI unit of electric flux is?",
+"Speed of light in vacuum is?",
+"Unit of power is?",
+"Which law explains electromagnetic induction?",
+"Dimensional formula of force is?"
+
+];
+
+/* CHEMISTRY */
+
+const chemistryReal = [
+
+"pH value of neutral solution is?",
+"Atomic number represents?",
+"Which gas is evolved during photosynthesis?",
+"Avogadro number value is?",
+"Which acid is present in vinegar?"
+
+];
+
+function generateQuestions(subject,start){
+
+for(let i=0;i<40;i++){
+
+let questionText;
+
+if(subject==="Botany" && i<botanyReal.length){
+questionText=botanyReal[i];
+}
+else if(subject==="Zoology" && i<zoologyReal.length){
+questionText=zoologyReal[i];
+}
+else if(subject==="Physics" && i<physicsReal.length){
+questionText=physicsReal[i];
+}
+else if(subject==="Chemistry" && i<chemistryReal.length){
+questionText=chemistryReal[i];
+}
+else{
+questionText=`${subject} Question ${i+1}`;
+}
+
+questions.push({
+subject:subject,
+questionNo:start+i,
+question:questionText,
+options:[
+"Option A",
+"Option B",
+"Option C",
+"Option D"
+]
+});
 
 }
+
+}
+
+generateQuestions("Botany",1);
+generateQuestions("Zoology",41);
+generateQuestions("Physics",81);
+generateQuestions("Chemistry",121);
 
 /* =========================
 STATE
 ========================= */
 
-let currentQuestion = 0;
+let currentSubject="Botany";
+let currentQuestionIndex=0;
 
-const answers = new Array(180).fill(null);
+const answers=new Array(160).fill(null);
+const status=new Array(160).fill("not-visited");
 
-const questionStatus = new Array(180).fill("not-visited");
+/* =========================
+SUBJECT RANGES
+========================= */
+
+const subjectRanges={
+Botany:[0,39],
+Zoology:[40,79],
+Physics:[80,119],
+Chemistry:[120,159]
+};
 
 /* =========================
 PAGES
@@ -834,32 +919,47 @@ PAGES
 
 function showInstructions(){
 
-    document.getElementById("loginPage").classList.add("hidden");
-
-    document.getElementById("instructionsPage").classList.remove("hidden");
+document.getElementById("loginPage").classList.add("hidden");
+document.getElementById("instructionsPage").classList.remove("hidden");
 
 }
 
 function startExam(){
 
-    const check = document.getElementById("agreeCheck");
+if(!document.getElementById("agreeCheck").checked){
 
-    if(!check.checked){
+alert("Please accept instructions.");
+return;
 
-        alert("Please read and accept instructions.");
+}
 
-        return;
-    }
+document.getElementById("instructionsPage").classList.add("hidden");
+document.getElementById("examPage").classList.remove("hidden");
 
-    document.getElementById("instructionsPage").classList.add("hidden");
+generatePalette();
+loadQuestion();
+startTimer();
 
-    document.getElementById("examPage").classList.remove("hidden");
+}
 
-    generatePalette();
+/* =========================
+SUBJECT SWITCH
+========================= */
 
-    loadQuestion();
+function switchSubject(subject){
 
-    startTimer();
+currentSubject=subject;
+
+document.querySelectorAll(".subject-tab").forEach(tab=>{
+tab.classList.remove("active");
+});
+
+event.target.classList.add("active");
+
+currentQuestionIndex=subjectRanges[subject][0];
+
+generatePalette();
+loadQuestion();
 
 }
 
@@ -869,43 +969,41 @@ LOAD QUESTION
 
 function loadQuestion(){
 
-    const q = questions[currentQuestion];
+const q=questions[currentQuestionIndex];
 
-    document.getElementById("questionNumber").innerText = currentQuestion+1;
+document.getElementById("questionNumber").innerText=q.questionNo;
 
-    document.getElementById("questionText").innerText = q.question;
+document.getElementById("questionText").innerText=q.question;
 
-    const optionsContainer = document.getElementById("optionsContainer");
+const optionsContainer=document.getElementById("optionsContainer");
 
-    optionsContainer.innerHTML = "";
+optionsContainer.innerHTML="";
 
-    q.options.forEach((option,index)=>{
+q.options.forEach((opt,index)=>{
 
-        const div = document.createElement("div");
+const div=document.createElement("div");
 
-        div.className = "option";
+div.className="option";
 
-        div.innerHTML = `
-            <label>
-                <input type="radio"
-                       name="option"
-                       value="${index}"
-                       ${answers[currentQuestion] == index ? "checked" : ""}>
-                ${option}
-            </label>
-        `;
+div.innerHTML=`
+<label>
+<input type="radio"
+name="option"
+value="${index}"
+${answers[currentQuestionIndex]==index?"checked":""}>
+${opt}
+</label>
+`;
 
-        optionsContainer.appendChild(div);
+optionsContainer.appendChild(div);
 
-    });
+});
 
-    if(questionStatus[currentQuestion] === "not-visited"){
+if(status[currentQuestionIndex]==="not-visited"){
+status[currentQuestionIndex]="not-answered";
+}
 
-        questionStatus[currentQuestion] = "not-answered";
-
-    }
-
-    updatePalette();
+updatePalette();
 
 }
 
@@ -913,25 +1011,23 @@ function loadQuestion(){
 SAVE ANSWER
 ========================= */
 
-function saveCurrentAnswer(){
+function saveAnswer(){
 
-    const selected = document.querySelector('input[name="option"]:checked');
+const selected=document.querySelector('input[name="option"]:checked');
 
-    if(selected){
+if(selected){
 
-        answers[currentQuestion] = selected.value;
+answers[currentQuestionIndex]=selected.value;
+status[currentQuestionIndex]="answered";
 
-        questionStatus[currentQuestion] = "answered";
+}
+else{
 
-    }else{
+if(status[currentQuestionIndex]!=="review"){
+status[currentQuestionIndex]="not-answered";
+}
 
-        if(questionStatus[currentQuestion] !== "review"){
-
-            questionStatus[currentQuestion] = "not-answered";
-
-        }
-
-    }
+}
 
 }
 
@@ -941,39 +1037,38 @@ BUTTONS
 
 function saveAndNext(){
 
-    saveCurrentAnswer();
+saveAnswer();
 
-    if(currentQuestion < 179){
+const end=subjectRanges[currentSubject][1];
 
-        currentQuestion++;
-
-        loadQuestion();
-    }
+if(currentQuestionIndex<end){
+currentQuestionIndex++;
+loadQuestion();
+}
 
 }
 
 function markReview(){
 
-    saveCurrentAnswer();
+saveAnswer();
 
-    questionStatus[currentQuestion] = "review";
+status[currentQuestionIndex]="review";
 
-    if(currentQuestion < 179){
+const end=subjectRanges[currentSubject][1];
 
-        currentQuestion++;
-
-        loadQuestion();
-    }
+if(currentQuestionIndex<end){
+currentQuestionIndex++;
+loadQuestion();
+}
 
 }
 
 function clearResponse(){
 
-    answers[currentQuestion] = null;
+answers[currentQuestionIndex]=null;
+status[currentQuestionIndex]="not-answered";
 
-    questionStatus[currentQuestion] = "not-answered";
-
-    loadQuestion();
+loadQuestion();
 
 }
 
@@ -983,51 +1078,57 @@ PALETTE
 
 function generatePalette(){
 
-    const palette = document.getElementById("palette");
+const palette=document.getElementById("paletteGrid");
 
-    palette.innerHTML = "";
+palette.innerHTML="";
 
-    for(let i=0;i<180;i++){
+const start=subjectRanges[currentSubject][0];
+const end=subjectRanges[currentSubject][1];
 
-        const btn = document.createElement("button");
+for(let i=start;i<=end;i++){
 
-        btn.className = "q-btn";
+const btn=document.createElement("button");
 
-        btn.innerText = i+1;
+btn.className="qbtn";
+btn.innerText=questions[i].questionNo;
 
-        btn.onclick = ()=>{
+btn.onclick=()=>{
 
-            saveCurrentAnswer();
+saveAnswer();
 
-            currentQuestion = i;
+currentQuestionIndex=i;
 
-            loadQuestion();
-        };
+loadQuestion();
 
-        palette.appendChild(btn);
+};
 
-    }
+palette.appendChild(btn);
 
-    updatePalette();
+}
+
+updatePalette();
 
 }
 
 function updatePalette(){
 
-    const buttons = document.querySelectorAll(".q-btn");
+const buttons=document.querySelectorAll(".qbtn");
 
-    buttons.forEach((btn,index)=>{
+const start=subjectRanges[currentSubject][0];
 
-        btn.className = "q-btn";
+buttons.forEach((btn,index)=>{
 
-        btn.classList.add(questionStatus[index]);
+const realIndex=start+index;
 
-        if(index === currentQuestion){
+btn.className="qbtn";
 
-            btn.classList.add("current");
-        }
+btn.classList.add(status[realIndex]);
 
-    });
+if(realIndex===currentQuestionIndex){
+btn.classList.add("current");
+}
+
+});
 
 }
 
@@ -1035,36 +1136,33 @@ function updatePalette(){
 TIMER
 ========================= */
 
-let totalSeconds = 3 * 60 * 60;
+let totalSeconds=3*60*60;
 
 function startTimer(){
 
-    const timerEl = document.getElementById("timer");
+const timer=document.getElementById("timer");
 
-    const interval = setInterval(()=>{
+const interval=setInterval(()=>{
 
-        const hours = Math.floor(totalSeconds / 3600);
+const h=Math.floor(totalSeconds/3600);
+const m=Math.floor((totalSeconds%3600)/60);
+const s=totalSeconds%60;
 
-        const minutes = Math.floor((totalSeconds % 3600)/60);
+timer.innerText=
+String(h).padStart(2,"0")+":"+
+String(m).padStart(2,"0")+":"+
+String(s).padStart(2,"0");
 
-        const seconds = totalSeconds % 60;
+if(totalSeconds<=0){
 
-        timerEl.innerText =
-            String(hours).padStart(2,"0")+":"+
-            String(minutes).padStart(2,"0")+":"+
-            String(seconds).padStart(2,"0");
+clearInterval(interval);
+showSummary();
 
-        if(totalSeconds <= 0){
+}
 
-            clearInterval(interval);
+totalSeconds--;
 
-            showSummary();
-
-        }
-
-        totalSeconds--;
-
-    },1000);
+},1000);
 
 }
 
@@ -1074,43 +1172,73 @@ SUBMIT
 
 function submitExam(){
 
-    const confirmSubmit = confirm("Are you sure you want to submit the exam?");
+const confirmSubmit=confirm(
+"Are you sure you want to submit the exam?"
+);
 
-    if(confirmSubmit){
+if(confirmSubmit){
 
-        saveCurrentAnswer();
+saveAnswer();
 
-        showSummary();
-    }
+showSummary();
 
 }
 
+}
+
+/* =========================
+SUMMARY
+========================= */
+
 function showSummary(){
 
-    document.getElementById("summaryModal").classList.remove("hidden");
+document.getElementById("summaryModal").classList.remove("hidden");
 
-    const answered =
-        questionStatus.filter(q=>q==="answered").length;
+const answered=status.filter(s=>s==="answered").length;
 
-    const review =
-        questionStatus.filter(q=>q==="review").length;
+const review=status.filter(s=>s==="review").length;
 
-    const notAnswered =
-        180 - answered - review;
+const notAnswered=160-answered-review;
 
-    document.getElementById("totalQuestions").innerText = 180;
+document.getElementById("totalCount").innerText=160;
+document.getElementById("answeredCount").innerText=answered;
+document.getElementById("notAnsweredCount").innerText=notAnswered;
+document.getElementById("reviewCount").innerText=review;
 
-    document.getElementById("answeredCount").innerText = answered;
+/* SUBJECT COUNTS */
 
-    document.getElementById("notAnsweredCount").innerText = notAnswered;
+let html="";
 
-    document.getElementById("reviewCount").innerText = review;
+Object.keys(subjectRanges).forEach(subject=>{
+
+const start=subjectRanges[subject][0];
+const end=subjectRanges[subject][1];
+
+let count=0;
+
+for(let i=start;i<=end;i++){
+
+if(status[i]==="answered"){
+count++;
+}
+
+}
+
+html+=`
+<div class="summary-row">
+${subject}: <strong>${count}/40 Answered</strong>
+</div>
+`;
+
+});
+
+document.getElementById("subjectSummary").innerHTML=html;
 
 }
 
 function closeSummary(){
 
-    document.getElementById("summaryModal").classList.add("hidden");
+document.getElementById("summaryModal").classList.add("hidden");
 
 }
 
@@ -1120,43 +1248,28 @@ FULLSCREEN
 
 function toggleFullscreen(){
 
-    if(!document.fullscreenElement){
+if(!document.fullscreenElement){
 
-        document.documentElement.requestFullscreen();
+document.documentElement.requestFullscreen();
 
-    }else{
+}
+else{
 
-        document.exitFullscreen();
-    }
+document.exitFullscreen();
+
+}
 
 }
 
 /* =========================
-PREVENT REFRESH
+REFRESH WARNING
 ========================= */
 
-window.onbeforeunload = function(){
+window.onbeforeunload=function(){
 
-    return "Exam is running. Are you sure you want to leave?";
+return "Exam is in progress.";
+
 };
-
-/* =========================
-SUBJECT TAB UI
-========================= */
-
-const tabs = document.querySelectorAll(".subject-tab");
-
-tabs.forEach(tab=>{
-
-    tab.addEventListener("click",()=>{
-
-        tabs.forEach(t=>t.classList.remove("active"));
-
-        tab.classList.add("active");
-
-    });
-
-});
 
 </script>
 
